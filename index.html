@@ -1,182 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>FluxusZ — Downloader</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0b0c0f;
-  --panel:#0f1114;
-  --muted:#9aa0a6;
-  --accent:#8a5cff;
-  --glow: 0 8px 30px rgba(138,92,255,0.18), 0 2px 6px rgba(138,92,255,0.12);
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#e6e9ee;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-body{background:radial-gradient(1200px 600px at 10% 10%, rgba(138,92,255,0.06), transparent),
-             radial-gradient(800px 400px at 90% 90%, rgba(0,200,255,0.02), transparent),
-             var(--bg);
-display:flex;align-items:center;justify-content:center;padding:16px;}
-
-.card{
-  width:min(96%, 920px);
-  max-width:980px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.03);
-  border-radius:14px;
-  padding:28px;
-  display:grid;
-  grid-template-columns:1fr 320px;
-  gap:18px;
-  box-shadow: 0 10px 40px rgba(2,6,23,0.6);
-}
-
-.brand{
-  display:flex;
-  gap:14px;
-  align-items:center;
-}
-
-.logo{
-  width:72px;
-  height:72px;
-  border-radius:12px;
-  display:block;
-  overflow:hidden;
-  background:linear-gradient(135deg, rgba(138,92,255,0.18), rgba(0,200,255,0.04));
-  border:1px solid rgba(138,92,255,0.08);
-  box-shadow: var(--glow);
-}
-
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill; /* stretch to fit */
-  display: block;
-  user-select: none;
-  border-radius: 12px;
-}
-
-.h1{font-size:20px;font-weight:700;margin:0}
-.lead{color:var(--muted);margin-top:6px;font-size:13px}
-.controls{display:flex;flex-direction:column;align-items:stretch;gap:12px}
-.panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-.small{font-size:12px;color:var(--muted)}
-.download-wrap{display:flex;align-items:center;justify-content:center;height:100%}
-.btn-download{
-  appearance:none;border:0;outline:0;cursor:pointer;
-  padding:18px 36px;border-radius:999px;font-weight:700;font-size:16px;
-  background:linear-gradient(180deg, rgba(138,92,255,0.14), rgba(138,92,255,0.08));
-  color:var(--accent);letter-spacing:0.6px;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;
-  position:relative;overflow:visible;
-}
-.btn-download:before{
-  content:"";position:absolute;inset:0;border-radius:999px;z-index:-1;opacity:0;transition:opacity .18s ease, transform .18s ease, filter .18s ease;}
-.btn-download:hover{transform:translateY(-4px);}
-.btn-download:hover:before{opacity:1;box-shadow:var(--glow);filter:blur(6px);transform:scale(1.05);background:radial-gradient(closest-side, rgba(138,92,255,0.22), transparent);}
-.btn-download:active{transform:translateY(-1px) scale(.99);}
-.btn-download.pulse{animation:click-pulse .6s ease-out;}
-@keyframes click-pulse{0%{box-shadow:0 8px 26px rgba(138,92,255,0.22)}50%{transform:scale(.98)}100%{box-shadow:var(--glow);transform:scale(1)}}
-
-.meta{font-size:13px;color:var(--muted);display:flex;gap:12px;align-items:center}
-.footer{grid-column:1/-1;margin-top:6px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;align-items:center}
-.badge{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);font-weight:600}
-
-@media (max-width:760px){
-  .card{
-    grid-template-columns:1fr;
-    padding:16px;
-  }
-  .logo{
-    width:56px;
-    height:56px;
-  }
-  .btn-download{
-    padding:14px 28px;
-    font-size:15px;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs & Changelogs Hub</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #00d4ff;
+            --secondary-bg: #2a2a2a;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--secondary-bg);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        main {
+            display: flex;
+            min-height: 80vh;
+        }
+        aside {
+            width: 20%;
+            background-color: var(--secondary-bg);
+            padding: 1rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+        #content {
+            flex: 1;
+            padding: 2rem;
+        }
+        article {
+            background-color: var(--secondary-bg);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        footer {
+            background-color: var(--secondary-bg);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="card" role="main">
-  <div>
-    <div class="brand">
-      <div class="logo">
-        <img alt="FluxusZ" src="data:image/octet-stream;base64,UklGRtwCAABXRUJQVlA4INACAABwFQCdASqAAIAAPm0wlUgkIqmloxVbuTANiWk7f1gFJFzI9n56RzpgAByg2cXNV6unoV/rMX5i19Pk555Zskb/ZeVyv4ZCsIRmvLRWNPtrK1d+vOqIKnO0TkFc/uxo87D3iXwQ37oxf2gUP4semTiGjo5HSFyAdIL7Wo7Zo+GEVwrkt+nHrLtJ5rewsikeog+XMEvLxYyd+F03t8e5F+o5IkWaKAHfa+xlHjCM/V7n7RjAAAAA/vvwU5M+PROu0ulQpRZjYaPbBStKCzIkytjQ9wU8/w65+C7KU13BGcNp6RMOkLejo79FFo3TGo4OZVXxLq89/2MMK0vUXA1Uu8KdZIMAc4w1TLM2YPQPUDV5vNwyFzlmuzn0gjeIjo2yNiEVdwLISoBf3QU/mSICjDiXfw3BL7sx6lfSwb0D8ftOLhoBiP+GUYPc733si7jHe0wrRP85034Klf24N+V1/SkSU0GSX/STJ5J8aLtP9g3AKAb3X6jGYXTZLRDvenKkRshJPxpuT9tQ+pZbL6/377oNyTDYctG3YMR1QVv6NMfn4z8e7eK9+D/zRBUW+Yqk+aGvGyLnhpVccXldZ7z07AzRiX42wsgg9B3o1fhilMGS3ZbVc6iA6w0dtyFkGdX9paaYdeahHFFGxnnwMgrF5mt/v1iQj72gFzYLyy/1xqcdmR3/WQH1x7cy3l/tD7DyTeN/Bcp6RpBMtVvQAj+rX1JAP1FOmlekPnahuvFrLw6aEh807jxn0ZffPTyu+GM49WzGIfxfKRCRxNfMTI/pmaIfAUZYQYTrK5Pzc8N3VydVYJHi/dCszZxmjYI71cfRLT+nQa5b0ODQh+t7N3lDhozJN1lOxEQFkkCLExMI75U29q2zE517cAFFxrOk7wwVz3RM7diABoIpjOfjq/xuWzXKZ1NW7aBK+FbjxQvZbbyyxZxhOMCgkZIiPRHX9Pb+gAA=">
-      </div>
-      <div>
-        <div class="h1">FluxusZ</div>
-        <div class="lead">Lightweight Executor • Roblox Exploit • secure download</div>
-      </div>
-    </div>
-
-    <div style="height:18px"></div>
-
-    <div class="panel small">
-      <div style="font-weight:600;margin-bottom:8px">About</div>
-      FluxusZ is an advanced Roblox Executor developed by Jake Brock and his Dev Team. Use the Download button to fetch the latest build.
-      <div style="height:12px"></div>
-      <div class="meta">
-        <div>v1.0.0</div>
-        <div class="badge">Signed</div>
-      </div>
-    </div>
-
-    <div style="height:14px"></div>
-
-    <div class="panel small">
-      <div style="font-weight:600;margin-bottom:8px">Notes</div>
-      Currently Fluxus Z is Only Available for Android.
-    </div>
-  </div>
-
-  <div class="controls">
-    <div class="panel download-wrap">
-      <button id="downloadBtn" class="btn-download" aria-label="Download FluxusZ">Download FluxusZ</button>
-    </div>
-
-    <div class="panel small">
-      <div style="font-weight:600;margin-bottom:8px">Download details</div>
-      <div id="status">Ready to download.</div>
-      <div style="height:8px"></div>
-      <div class="small">Click the button to download FluxusZ.</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div>Licensed to FluxusZ</div>
-    <div>Website by <span style="font-weight:700">Kaiso</span></div>
-  </div>
-</div>
-
-<script>
-const btn = document.getElementById('downloadBtn')
-const status = document.getElementById('status')
-let lastPulse = 0
-const target = 'https://download2296.mediafire.com/2g1trvionelg5zFLMqckx7xcvY5dUHbi-UKqkMlQpF6s0RyWh7H7WJzCCLSWc656x4JeCqO8QfUv4hVWXG4NcDYMWCZRaizj3LoO0wCk6sVj7Npi45TpWUBjxOQ2qGNXAjExG18uQw5-wnrUKCkCK0kCBhA-_OO6dVBdwMmN-IqSbQ/ml44k8hc0mjt8l8/FluxusZ+V1.1.apk'
-
-btn.addEventListener('mouseenter', ()=>{})
-btn.addEventListener('click', async (e)=>{
-  const now = Date.now()
-  if(now - lastPulse < 650) return
-  lastPulse = now
-  btn.classList.add('pulse')
-  setTimeout(()=>btn.classList.remove('pulse'),700)
-  status.textContent = 'Preparing download...'
-  try{
-    window.open(target,'_blank','noopener')
-    status.textContent = 'Redirecting to download.'
-  }catch(err){
-    console.error(err)
-    status.textContent = 'Redirect failed.'
-  }
-})
-</script>
+    <header>
+        <h1>Docs & Changelogs Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#changelogs">Changelogs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside id="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">API Docs</a></li>
+                <li><a href="#">User Guides</a></li>
+            </ul>
+        </aside>
+        <section id="content">
+            <h2>Latest Changelogs</h2>
+            <article>
+                <h3>Version 1.2.0</h3>
+                <p>Added new features for better user experience. Fixed bugs in the API integration.</p>
+            </article>
+            <article>
+                <h3>Version 1.1.0</h3>
+                <p>Introduced dark mode support. Improved performance on mobile devices.</p>
+            </article>
+            <article>
+                <h3>Version 1.0.0</h3>
+                <p>Initial release with core documentation and changelog functionality.</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; crck</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const articles = document.querySelectorAll('article');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            articles.forEach(article => {
+                observer.observe(article);
+            });
+        });
+    </script>
 </body>
 </html>
